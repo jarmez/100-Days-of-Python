@@ -1,0 +1,32 @@
+Fedora Build steps
+
+1 - base build
+2 - Fedora update - sudo dnf update
+	sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+	dnf copr enable erikreider/SwayNotificationCenter
+	yum install '*mercurial*'
+3 - change desktop manager to SDDM
+    sudo dnf install sddm sddm-kcm qt6-qtvirtualkeyboard boost meson ninja-build imv mpd mpc mpv ncmpcpp zsh neovim bat zoxide tmux kitty fzf hyprland dunst qbittorrent waybar gimp shotcut swaybg thunderbird zathura zathura-pdf-mupdf imv SwayNotificationCenter irssi libwayland-devlibgtk-3-dev pkgconf meson gtk3-devel mesa-libgbm-devel nwg-dock
+    sudo systemctl disable gdm
+    sudo systemctl enable sddm 
+    configure sddm (dot file)
+    Install themes:
+        https://www.pling.com/p/2191680/
+ 	cp /etc/sddm.conf /etc/sddm/conf/d/sddm.conf
+        set theme and enable virtualkeyboard
+    Copy to github /etc/sddm.conf.d/sddm.conf
+    reboot to test    
+Prereqs for Hyprland
+    Install MPD - https://www.musicpd.org/download.html
+    Install WOFI
+    	hg clone https://hg.sr.ht/~scoopta/wofi
+	cd wofi
+	meson setup build
+	ninja -C build
+cd ~/Downloads
+git clone https://github.com/jblais493/Logos.git
+
+
+
+	run hyprland script install to install and configure
+5 - Run app deployment script to install apps
