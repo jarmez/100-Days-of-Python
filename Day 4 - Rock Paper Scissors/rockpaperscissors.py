@@ -1,3 +1,4 @@
+#!/bin/python
 # Rock Paper Scissors
 import random
 
